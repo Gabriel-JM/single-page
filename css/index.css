@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    font-family: monospace;
+    color: #333;
+}
+
+main {
+    min-height: 80vh;
+}
+
+.main-header {
+    border-bottom: 1px solid #333;
+    margin: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header > h1 {
+    margin-left: 10px;
+}
+
+.main-menu {
+    margin-right: 10px;
+}
+
+.main-footer {
+    color: #fdfdfd;
+    background-color: #333;
+    padding: 10px;
+}
