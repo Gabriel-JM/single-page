@@ -9,23 +9,52 @@ main {
 }
 
 .main-header {
-    border-bottom: 1px solid #333;
-    margin: 0 10px;
+    background-color: #333;
+    color: #fdfdfd;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .main-header > h1 {
-    margin-left: 10px;
+    cursor: pointer;
+    font-weight: normal;
 }
 
-.main-menu {
+.main-header > h1:hover {
+    text-decoration: underline;
+}
+
+.main-menu > ul {
+    list-style: none;
     margin-right: 10px;
+}
+
+.main-menu li {
+    font-size: 1.05em;
+    color: #333;
+    cursor: pointer;
+    padding: 8px 10px;
+    background-color: rgba(230, 230, 230, 0.6);
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+.main-menu li:hover {
+    color: #fdfdfd;
+    background-color: rgba(120, 120, 120, 0.5);
+}
+
+.main-content {
+    margin: 0 10px;
 }
 
 .main-footer {
     color: #fdfdfd;
     background-color: #333;
     padding: 10px;
+}
+
+.copyright {
+    font-size: 1.2em;
 }

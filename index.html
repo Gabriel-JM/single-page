@@ -9,16 +9,21 @@
 </head>
 <body>
     <header class="main-header">
-        <h1 onclick="loadFileContent('home.html')">Single Page Application</h1>
+        <h1 
+            onclick="loadFileContent('home.html')"
+            title="Home"
+        >Single Page Application</h1>
         <nav class="main-menu">
-            <ul onclick="loadFileContent('about.html')">About</ul>
+            <ul>
+                <li onclick="loadFileContent('about.html')">About</li>
+            </ul>
         </nav>
     </header>
 
-    <main main-content ></main>
+    <main class="main-content" main-content ></main>
 
     <footer class="main-footer">
-        <p>&copy; All rights reserved!</p>
+        <p><span class="copyright">&copy;</span> All rights reserved!</p>
     </footer>
 
     <script src="js/Main.js"></script>
