@@ -1,3 +1,3 @@
-document.querySelector('button').addEventListener('click', () => {
-    console.log('about button')
-})
+document.querySelector('section > p').innerHTML += `
+    Micro desenhos animados em flash
+`

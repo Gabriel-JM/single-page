@@ -5,7 +5,7 @@
 async function loadFileContent(fileName) {
     const main = document.querySelector('[main-content]')
 
-    const response = await fetch(`http://127.0.0.1:5500/pages/${fileName}`)
+    const response = await fetch(`http://localhost:5500/pages/${fileName}`)
     const data = await response.text()
     
     main.innerHTML = data
@@ -15,8 +15,9 @@ async function loadFileContent(fileName) {
 }
 
 function loadScript() {
-    const scriptFileName = document.querySelector('[script]').getAttribute('script')
-    if(scriptFileName) {
+    const scriptAttribute = document.querySelector('[script]')
+    if(scriptAttribute) {
+        const scriptFileName = scriptAttribute.getAttribute('script')
         const script = document.createElement('script')
         script.src = `js/${scriptFileName}`
 
@@ -25,8 +26,9 @@ function loadScript() {
 }
 
 function loadCss() {
-    const cssFileName = document.querySelector('[css]').getAttribute('css')
-    if(cssFileName) {
+    const cssAttribute = document.querySelector('[css]')
+    if(cssAttribute) {
+        const cssFileName = cssAttribute.getAttribute('css')
         const link = document.createElement('link')
         link.rel = "stylesheet"
         link.href = `css/${cssFileName}`
