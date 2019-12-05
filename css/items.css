@@ -1,3 +1,29 @@
-h2 {
-    color: red;
+.items-header {
+    border-bottom: 1px solid #333;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.items-header > h2 {
+    font-size: 1.9em;
+}
+
+.plus-btn {
+    font-size: 0.9em;
+    color: #118afc;
+    background-color: transparent;
+    font-weight: bold;
+    border: 1px solid #118afc;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.plus-btn:hover {
+    color: #fdfdfd;
+    background-color: #118afc;
 }

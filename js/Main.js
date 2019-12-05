@@ -4,14 +4,22 @@
 
 async function loadFileContent(fileName) {
     const main = document.querySelector('[main-content]')
-
-    const response = await fetch(`http://localhost:5500/pages/${fileName}`)
-    const data = await response.text()
+    const data = await requestFileContent(fileName)
     
     main.innerHTML = data
 
     loadScript()
     loadCss()
+}
+
+async function requestFileContent(fileName) {
+    try {
+        const response = await fetch(`http://localhost:5500/pages/${fileName}`)
+        const data = await response.text()
+        return data
+    } catch(err) {
+        throw new Error(err)
+    }
 }
 
 function loadScript() {
@@ -40,7 +48,7 @@ function loadCss() {
 }
 
 function optimizeCodes() {
-    document.querySelectorAll('script').forEach(script => {
+    document.querySelectorAll('script[src]').forEach(script => {
         const file = script.getAttribute('src')
         if(file !== 'js/Main.js') {
             script.remove()
@@ -49,7 +57,7 @@ function optimizeCodes() {
 }
 
 function optimizeStyles() {
-    document.querySelectorAll('link[rel="stylesheet"]').forEach(tag => {
+    document.querySelectorAll('link[rel="stylesheet"]:not([fixed])').forEach(tag => {
         const file = tag.getAttribute('href')
         if(file !== 'css/index.css') {
             tag.remove()
