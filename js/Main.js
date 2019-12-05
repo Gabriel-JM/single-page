@@ -21,6 +21,7 @@ function loadScript() {
         const script = document.createElement('script')
         script.src = `js/${scriptFileName}`
 
+        optimizeCodes()
         document.body.appendChild(script)
     }
 }
@@ -33,6 +34,25 @@ function loadCss() {
         link.rel = "stylesheet"
         link.href = `css/${cssFileName}`
     
+        optimizeStyles()
         document.head.appendChild(link)
     }
+}
+
+function optimizeCodes() {
+    document.querySelectorAll('script').forEach(script => {
+        const file = script.getAttribute('src')
+        if(file !== 'js/Main.js') {
+            script.remove()
+        }
+    })
+}
+
+function optimizeStyles() {
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(tag => {
+        const file = tag.getAttribute('href')
+        if(file !== 'css/index.css') {
+            tag.remove()
+        }
+    })
 }
