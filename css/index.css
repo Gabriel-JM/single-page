@@ -1,3 +1,4 @@
+/* Default style */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     outline: 0;
 }
 
+/* Header, footer and main size */
 body {
     font-family: monospace;
     color: #333;
@@ -70,6 +72,7 @@ main {
     font-size: 1.2em;
 }
 
+/* Modal */
 .modal-container {
     position: fixed;
     top: 0;
@@ -77,10 +80,10 @@ main {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    display: none;
+    animation: show 0.5s;
 }
 
 .modal {
@@ -110,6 +113,75 @@ main {
     font-size: 1.4em;
     padding: 0 0 10px 5px;
     border-bottom: 1px solid #777;
-    margin-bottom: 26px;
+    margin-bottom: 16px;
     text-align: center;
+}
+
+/* Buttons */
+.plus-btn {
+    font-size: 0.9em;
+    color: #118afc;
+    background-color: transparent;
+    font-weight: bold;
+    border: 1px solid #118afc;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.plus-btn:hover {
+    color: #fdfdfd;
+    background-color: #118afc;
+}
+
+.btn-submit {
+    background-color: transparent;
+    font-size: 0.9em;
+    color: #32b42e;
+    padding: 6px 12px;
+    border: 1px solid #32b42e;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.btn-submit:hover {
+    background-color: #32b42e;
+    color: #fdfdfd;
+}
+
+.btn-cancel {
+    background-color: transparent;
+    font-size: 0.9em;
+    color: #777;
+    padding: 6px 12px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.btn-cancel:hover {
+    background-color: #777;
+    color: #fdfdfd;
+}
+
+/* Utils */
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+/* Animations */
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

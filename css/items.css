@@ -11,19 +11,53 @@
     font-size: 1.9em;
 }
 
-.plus-btn {
-    font-size: 0.9em;
-    color: #118afc;
-    background-color: transparent;
-    font-weight: bold;
-    border: 1px solid #118afc;
-    padding: 8px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease-out;
+.items-modal-form {
+    display: grid;
+    grid-template-areas: "nome tipo" "efeito efeito" ". botoes";
+    column-gap: 10px;
 }
 
-.plus-btn:hover {
-    color: #fdfdfd;
-    background-color: #118afc;
+.items-modal-form input, .items-modal-form textarea {
+    display: block;
+    margin-bottom: 8px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px 8px;
+}
+
+.items-modal-form textarea {
+    width: 100%;
+    min-height: 60px;
+    max-height: 120px;
+    resize: vertical;
+}
+
+.items-modal-form > label > span {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+}
+
+.nome {
+    grid-area: nome;
+}
+
+.tipo {
+    grid-area: tipo;
+}
+
+.efeito {
+    grid-area: efeito;
+}
+
+.form-actions {
+    margin-top: 8px;
+    grid-area: botoes;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.form-actions > button:first-child {
+    margin-right: 10px; 
 }

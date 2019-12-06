@@ -27,6 +27,7 @@ function loadScript() {
     if(scriptAttribute) {
         const scriptFileName = scriptAttribute.getAttribute('script')
         const script = document.createElement('script')
+        script.type = 'module'
         script.src = `js/${scriptFileName}`
 
         optimizeCodes()
@@ -48,19 +49,11 @@ function loadCss() {
 }
 
 function optimizeCodes() {
-    document.querySelectorAll('script[src]').forEach(script => {
-        const file = script.getAttribute('src')
-        if(file !== 'js/Main.js') {
-            script.remove()
-        }
-    })
+    const query = 'script:not([src="js/Main.js"])'
+    document.querySelectorAll(query).forEach(script => script.remove())
 }
 
 function optimizeStyles() {
-    document.querySelectorAll('link[rel="stylesheet"]:not([fixed])').forEach(tag => {
-        const file = tag.getAttribute('href')
-        if(file !== 'css/index.css') {
-            tag.remove()
-        }
-    })
+    const query = 'link:not([href="css/index.css"])'
+    document.querySelectorAll(query).forEach(tag => tag.remove())
 }
