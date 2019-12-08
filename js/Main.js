@@ -1,20 +1,35 @@
-(function init() {
-    loadFileContent('home.html')
-})()
+"use strict"
+
+import PageScript from './PageScripts/PageScripts.js'
+
+let currentPage = null
+
+document.querySelectorAll('[to]').forEach(anchor => {
+    anchor.addEventListener('click', () => {
+        const fileName = anchor.getAttribute('to')
+        loadFileContent(fileName)
+    })
+})
 
 async function loadFileContent(fileName) {
-    const main = document.querySelector('[main-content]')
-    const data = await requestFileContent(fileName)
-    
-    main.innerHTML = data
 
-    loadScript()
-    loadCss()
+    if(fileName !== currentPage) {
+        const main = document.querySelector('[main-content]')
+        const data = await requestFileContent(fileName)
+    
+        main.innerHTML = data
+
+        loadScript(fileName)
+        loadCss()
+
+        currentPage = fileName
+    }
+    
 }
 
 async function requestFileContent(fileName) {
     try {
-        const response = await fetch(`http://localhost:5500/pages/${fileName}`)
+        const response = await fetch(`http://localhost:5500/pages/${fileName}.html`)
         const data = await response.text()
         return data
     } catch(err) {
@@ -22,38 +37,35 @@ async function requestFileContent(fileName) {
     }
 }
 
-function loadScript() {
-    const scriptAttribute = document.querySelector('[script]')
-    if(scriptAttribute) {
-        const scriptFileName = scriptAttribute.getAttribute('script')
-        const script = document.createElement('script')
-        script.type = 'module'
-        script.src = `js/${scriptFileName}`
-
-        optimizeCodes()
-        document.body.appendChild(script)
+function loadScript(fileName) {
+    if(PageScript[fileName]) {
+        PageScript[fileName]()
     }
 }
 
 function loadCss() {
     const cssAttribute = document.querySelector('[css]')
     if(cssAttribute) {
-        const cssFileName = cssAttribute.getAttribute('css')
-        const link = document.createElement('link')
-        link.rel = "stylesheet"
-        link.href = `css/${cssFileName}`
-    
-        optimizeStyles()
-        document.head.appendChild(link)
+        optimizeStylesImports()
+
+        const cssFileNames = cssAttribute.getAttribute('css').split(' ')
+        cssFileNames.forEach(cssFileName => {
+            if(cssFileName) {
+                const link = document.createElement('link')
+                link.rel = "stylesheet"
+                link.href = `css/${cssFileName}.css`
+                
+                document.head.appendChild(link)
+            }
+        })
     }
 }
 
-function optimizeCodes() {
-    const query = 'script:not([src="js/Main.js"])'
-    document.querySelectorAll(query).forEach(script => script.remove())
-}
-
-function optimizeStyles() {
+function optimizeStylesImports() {
     const query = 'link:not([href="css/index.css"])'
     document.querySelectorAll(query).forEach(tag => tag.remove())
 }
+
+(function init() {
+    loadFileContent('home')
+})()

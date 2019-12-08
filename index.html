@@ -9,13 +9,10 @@
 </head>
 <body>
     <header class="main-header">
-        <h1 
-            onclick="loadFileContent('home.html')"
-            title="Home"
-        >Single Page Application</h1>
+        <h1 to="home" title="Home">Single Page Application</h1>
         <nav class="main-menu">
             <ul>
-                <li onclick="loadFileContent('items.html')">Items</li>
+                <li to="items">Items</li>
             </ul>
         </nav>
     </header>
@@ -26,6 +23,6 @@
         <p><span class="copyright">&copy;</span> All rights reserved!</p>
     </footer>
 
-    <script src="js/Main.js"></script>
+    <script type="module" src="js/Main.js"></script>
 </body>
 </html>

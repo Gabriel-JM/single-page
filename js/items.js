@@ -1,10 +1,18 @@
+"use strict"
+
 import Modal from './modal/Modal.js'
 
-const modal = new Modal()
+export default function items() {
+    const modal = new Modal()
 
-document.querySelector('[add-item]').addEventListener('click', () => {
-    modal.show()
-    console.log('hi')
-})
+    const formQuery = '.items-modal-form'
 
-console.log(modal)
+    document.querySelector('[add-item]').addEventListener('click', () => {
+        modal.show()
+    })
+
+    document.querySelector(formQuery).addEventListener('submit', event => {
+        event.preventDefault()
+    })
+
+}
