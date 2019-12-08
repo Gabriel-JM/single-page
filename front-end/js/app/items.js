@@ -1,6 +1,6 @@
 "use strict"
 
-import Modal from './modal/Modal.js'
+import Modal from '../modal/Modal.js'
 
 export default function items() {
     const modal = new Modal()

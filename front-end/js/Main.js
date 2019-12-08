@@ -1,6 +1,6 @@
 "use strict"
 
-import PageScript from './PageScripts/PageScripts.js'
+import scriptService from './scriptService/scriptService.js'
 
 let currentPage = null
 
@@ -38,8 +38,8 @@ async function requestFileContent(fileName) {
 }
 
 function loadScript(fileName) {
-    if(PageScript[fileName]) {
-        PageScript[fileName]()
+    if(scriptService[fileName]) {
+        scriptService[fileName]()
     }
 }
 
