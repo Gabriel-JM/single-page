@@ -13,7 +13,7 @@ class ItemService {
             items = fs.readFileSync(this.filePath, 'utf-8')
         }  catch {
             items = '[]'
-            fs.appendFileSync(this.filePath, '[]')
+            fs.appendFileSync(this.filePath, items)
         }
 
         return items

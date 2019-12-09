@@ -17,13 +17,13 @@ class ItemController extends AbstractController {
     run() {
         const { method, body, query } = this.content
 
-        this.ok()
         switch(method) {
             
             case 'GET':
                 if(query.id) {
                     const result = itemService.getOne(query.id)
                     if(result) {
+                        this.ok()
                         return this.res.end(result)
                     }
 
@@ -32,18 +32,22 @@ class ItemController extends AbstractController {
                         this.returnMessage('Not found', false)
                     )                    
                 }
+
+                this.ok()
                 return this.res.end(itemService.getAll())
 
             case 'POST':
                 const { name, type, description } = body
                 const item = new Item(name, type, description)
 
+                this.ok()
                 return this.res.end(itemService.postOne(item))
 
             case 'PUT':
                 const result = itemService.putOne(body)
 
                 if(result) {
+                    this.ok()
                     this.res.end(result)
                 }
 
@@ -57,6 +61,7 @@ class ItemController extends AbstractController {
                 const deleteResult = itemService.deleteOne(id)
 
                 if(deleteResult) {
+                    this.ok()
                     this.res.end(
                         this.returnMessage('Successful delete!', true)
                     )

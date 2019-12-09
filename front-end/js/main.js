@@ -4,9 +4,9 @@ import scriptService from './scriptService/scriptService.js'
 
 let currentPage = null
 
-document.querySelectorAll('[to]').forEach(anchor => {
+document.querySelectorAll('[goTo]').forEach(anchor => {
     anchor.addEventListener('click', () => {
-        const fileName = anchor.getAttribute('to')
+        const fileName = anchor.getAttribute('goTo')
         loadFileContent(fileName)
     })
 })
