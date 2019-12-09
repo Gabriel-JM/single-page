@@ -26,6 +26,13 @@ class AbstractController {
         this.res.writeHead(404, headers)
     }
 
+    returnMessage(message, status) {
+        return JSON.stringify({
+            message,
+            ok: status
+        })
+    }
+
 }
 
 module.exports = AbstractController
