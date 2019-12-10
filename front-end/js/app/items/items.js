@@ -1,10 +1,11 @@
 "use strict"
 
-import Modal from '../modal/Modal.js'
-import FormManager from '../form/FormManager.js'
+import Modal from '../../modal/Modal.js'
+import ItemsFormActions from './ItemsFormActions.js'
 
 export default function items() {
     const modal = new Modal()
+    const itemsFormActions = new ItemsFormActions()
 
     const formQuery = '.items-modal-form'
 
@@ -14,16 +15,7 @@ export default function items() {
 
     document.querySelector(formQuery).addEventListener('submit', event => {
         event.preventDefault()
-        const form = event.target
-        const formManager = new FormManager(form)
-        const item = {
-            id: null,
-            name: form.name.value,
-            type: form.type.value,
-            description: form.description.value
-        }
-
-        console.log(formManager)
+        itemsFormActions.validateForm(event.target)
     })
 
     document.querySelector('.btn-cancel').addEventListener('click', event => {

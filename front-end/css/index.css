@@ -138,16 +138,16 @@ main {
 .btn-submit {
     background-color: transparent;
     font-size: 0.9em;
-    color: #32b42e;
+    color: #46b758;
     padding: 6px 12px;
-    border: 1px solid #32b42e;
+    border: 1px solid #46b758;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease-out;
 }
 
 .btn-submit:hover {
-    background-color: #32b42e;
+    background-color: #46b758;
     color: #fdfdfd;
 }
 

@@ -28,8 +28,9 @@ async function loadFileContent(fileName) {
 }
 
 async function requestFileContent(fileName) {
+    const { href: host } = window.location
     try {
-        const response = await fetch(`http://localhost:5500/pages/${fileName}.html`)
+        const response = await fetch(`${host}/pages/${fileName}.html`)
         const data = await response.text()
         return data
     } catch(err) {

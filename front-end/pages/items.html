@@ -15,17 +15,17 @@
         <form class="items-modal-form">
             <label class="nome">
                 <span>Name</span>
-                <input type="text" name="name">
+                <input type="text" name="name" maxlength="50" required>
             </label>
 
             <label class="tipo">
                 <span>Type</span>
-                <input type="text" name="type">
+                <input type="text" name="type" maxlength="50" required>
             </label>
 
             <label class="efeito">
                 <span>Description</span>
-                <textarea name="description"></textarea>
+                <textarea name="description" minlength="10" required></textarea>
             </label>
 
             <div class="form-actions">
