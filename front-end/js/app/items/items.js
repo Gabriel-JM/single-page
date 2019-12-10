@@ -15,6 +15,7 @@ export default function items() {
 
     document.querySelector(formQuery).addEventListener('submit', event => {
         event.preventDefault()
+        itemsFormActions.setModal(modal)
         itemsFormActions.validateForm(event.target)
     })
 

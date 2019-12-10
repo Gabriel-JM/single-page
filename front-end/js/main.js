@@ -4,12 +4,14 @@ import scriptService from './scriptService/scriptService.js'
 
 let currentPage = null
 
-document.querySelectorAll('[goTo]').forEach(anchor => {
-    anchor.addEventListener('click', () => {
-        const fileName = anchor.getAttribute('goTo')
-        loadFileContent(fileName)
+function addRouterEvent() {
+    document.querySelectorAll('[goTo]').forEach(anchor => {
+        anchor.addEventListener('click', () => {
+            const fileName = anchor.getAttribute('goTo')
+            loadFileContent(fileName)
+        })
     })
-})
+}
 
 async function loadFileContent(fileName) {
 
@@ -41,6 +43,7 @@ async function requestFileContent(fileName) {
 function loadScript(fileName) {
     if(scriptService[fileName]) {
         scriptService[fileName]()
+        addRouterEvent()
     }
 }
 
