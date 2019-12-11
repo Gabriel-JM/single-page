@@ -1,6 +1,6 @@
 "use strict"
 
-import Modal from '../../modal/Modal.js'
+import Modal from '../../core/modal/Modal.js'
 import ItemsFormActions from './ItemsFormActions.js'
 
 export default function items() {
@@ -15,7 +15,7 @@ export default function items() {
 
     document.querySelector(formQuery).addEventListener('submit', event => {
         event.preventDefault()
-        itemsFormActions.setModal(modal)
+        itemsFormActions.modal = modal
         itemsFormActions.validateForm(event.target)
     })
 

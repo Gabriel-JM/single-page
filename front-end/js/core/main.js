@@ -1,38 +1,51 @@
 "use strict"
 
 import scriptService from './scriptService/scriptService.js'
+import HtmlObject from '../htmlStore/HtmlObject.js'
 
 let currentPage = null
-
-function addRouterEvent() {
-    document.querySelectorAll('[goTo]').forEach(anchor => {
-        anchor.addEventListener('click', () => {
-            const fileName = anchor.getAttribute('goTo')
-            loadFileContent(fileName)
-        })
-    })
-}
+let htmlContents = []
 
 async function loadFileContent(fileName) {
 
     if(fileName !== currentPage) {
         const main = document.querySelector('[main-content]')
-        const data = await requestFileContent(fileName)
-    
-        main.innerHTML = data
+        const htmlFileNames = htmlContents.map(({idName}) => idName)
+
+        main.innerHTML = await getHtmlContent(htmlFileNames, fileName)
 
         loadScript(fileName)
         loadCss()
-
         currentPage = fileName
     }
     
 }
 
+async function getHtmlContent(htmlFileNames, fileName) {
+    let htmlObj = null
+
+    if(!htmlFileNames.includes(fileName)) {
+        const data = await requestFileContent(fileName)
+
+        htmlObj = new HtmlObject(fileName, data)    
+
+        htmlContents = [
+            ...htmlContents,
+            htmlObj
+        ]
+    } else {
+        htmlObj = htmlContents.find(html => {
+            return html.idName == fileName
+        })
+    }
+
+    return htmlObj.htmlContent
+}
+
 async function requestFileContent(fileName) {
     const { href: host } = window.location
     try {
-        const response = await fetch(`${host}/pages/${fileName}.html`)
+        const response = await fetch(`${host}pages/${fileName}.html`)
         const data = await response.text()
         return data
     } catch(err) {
@@ -45,6 +58,15 @@ function loadScript(fileName) {
         scriptService[fileName]()
         addRouterEvent()
     }
+}
+
+function addRouterEvent() {
+    document.querySelectorAll('[goTo]').forEach(anchor => {
+        anchor.addEventListener('click', () => {
+            const fileName = anchor.getAttribute('goTo')
+            loadFileContent(fileName)
+        })
+    })
 }
 
 function loadCss() {
@@ -66,7 +88,7 @@ function loadCss() {
 }
 
 function optimizeStylesImports() {
-    const query = 'link:not([href="css/index.css"])'
+    const query = 'link[rel="stylesheet"]:not([href="css/index.css"])'
     document.querySelectorAll(query).forEach(tag => tag.remove())
 }
 
