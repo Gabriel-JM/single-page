@@ -29,7 +29,7 @@ export default class FormValidator {
     }
 
     hasSpace(value) {
-        const expression = /^\s*$|\s+(?=[^a-zá-úà-ù])/i
+        const expression = /^\s*$|\s+(?=[^a-zá-úà-ù0-9])/i
 
         return RegExp(expression).test(value)
     }
@@ -43,9 +43,9 @@ export default class FormValidator {
             return !this.hasSpace(input.value)
         })
 
-        if (!allFieldsValidation) message = "Don't do that!"
-
         if (!spaceValidation) message = 'Invalid values!'
+
+        if (!allFieldsValidation) message = "Don't do that!"
 
         return {
             message,

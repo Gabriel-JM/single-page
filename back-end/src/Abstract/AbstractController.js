@@ -18,6 +18,10 @@ class AbstractController {
         this.res.writeHead(200, headers)
     }
 
+    options() {
+        this.res.writeHead(204, headers)
+    }
+
     notAllowed() {
         this.res.writeHead(405, headers)
     }

@@ -71,6 +71,10 @@ class ItemController extends AbstractController {
                 this.res.end(
                     this.returnMessage('Not found', false)
                 )
+
+            case 'OPTIONS':
+                this.options()
+                return this.res.end()
             
             default:
                 this.notAllowed()
