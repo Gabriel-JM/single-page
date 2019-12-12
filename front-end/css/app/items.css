@@ -1,3 +1,4 @@
+/* Page header */
 .items-header {
     border-bottom: 1px solid #333;
     padding: 10px;
@@ -11,6 +12,7 @@
     font-size: 1.9em;
 }
 
+/* Modal form */
 .items-modal-form {
     display: grid;
     grid-template-areas: "nome tipo" "efeito efeito" ". botoes";
@@ -60,4 +62,25 @@
 
 .form-actions > button:first-child {
     margin-right: 10px; 
+}
+
+/* Items table */
+.items-table {
+    margin: 20px 10px 0px 10px;
+    width: 70%;
+    background-color: #444;
+    border-spacing: 1px;
+}
+
+.items-table th, .items-table td {
+    padding: 4px;
+}
+
+.items-table th {
+    background-color: #ddd;
+    font-size: 0.85rem;
+}
+
+.items-table td {
+    background-color: #f9f9f9;
 }

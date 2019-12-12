@@ -88,7 +88,7 @@ function loadCss() {
 }
 
 function optimizeStylesImports() {
-    const query = 'link[rel="stylesheet"]:not([href="css/index.css"])'
+    const query = 'link[rel=stylesheet]:not([fixed])'
     document.querySelectorAll(query).forEach(tag => tag.remove())
 }
 
