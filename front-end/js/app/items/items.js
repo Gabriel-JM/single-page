@@ -4,12 +4,17 @@ import Modal from '../../core/modal/Modal.js'
 import ItemsFormActions from './ItemsFormActions.js'
 
 export default function items() {
+    const formQuery = '.items-modal-form'
+    const addItemBtn = '[add-item]'
+    const cancelForm = '.btn-cancel'
+    const itemsTable = '[items-table]'
+
     const modal = new Modal()
     const itemsFormActions = new ItemsFormActions()
 
-    const formQuery = '.items-modal-form'
+    itemsFormActions.init(itemsTable)
 
-    document.querySelector('[add-item]').addEventListener('click', () => {
+    document.querySelector(addItemBtn).addEventListener('click', () => {
         modal.show()
     })
 
@@ -19,7 +24,7 @@ export default function items() {
         itemsFormActions.validateForm(event.target)
     })
 
-    document.querySelector('.btn-cancel').addEventListener('click', event => {
+    document.querySelector(cancelForm).addEventListener('click', event => {
         event.preventDefault()
         document.querySelector(formQuery).reset()
         modal.hide()

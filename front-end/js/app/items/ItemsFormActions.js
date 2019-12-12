@@ -6,6 +6,8 @@ import Messenger from '../../core/message/Messenger.js'
 import HttpRequest from '../../core/http/HttpRequest.js'
 
 const currentUrl = 'http://localhost:3100/items'
+
+const http = new HttpRequest(currentUrl)
 const validationPattern = {
     name: {
         maxLength: 50,
@@ -25,6 +27,35 @@ export default class ItemsFormActions {
 
     modal = null
 
+
+    async init(tableQuery) {
+        this.itemsList = await http.get()
+        this.fillTable(tableQuery)
+    }
+
+    fillTable(tableQuery) {
+        const table = document.querySelector(tableQuery)
+        console.log(table)
+
+        if(this.itemsList) {
+            this.itemsList.forEach(item => {
+                const tr = document.createElement('tr')
+                tr.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.type}</td>
+                    <td>${item.description}</td>
+                    <td class="items-actions">
+                        <button class="btn-edit" title="Edit">&#128393;</button>
+                        <button class="btn-delete" title="Delete">&#x2716;</button>
+                    </td>`
+
+                console.log(tr)
+                
+                table.appendChild(tr)
+            })
+        }
+    }
+
     validateForm(form) {
         const formManager = new FormManager(form)
         const formValidator = new FormValidator(validationPattern)
@@ -41,7 +72,6 @@ export default class ItemsFormActions {
     }
     
     submitForm(form) {
-        const http = new HttpRequest(currentUrl)
         const { elements } = form
 
         if(elements.id) {

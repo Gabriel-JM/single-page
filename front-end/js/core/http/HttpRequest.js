@@ -46,7 +46,7 @@ export default class HttpRequest {
 
             const data = await response.json()
 
-            return data
+            return data || null
         } catch(error) {
             throw new Error(error)
         }

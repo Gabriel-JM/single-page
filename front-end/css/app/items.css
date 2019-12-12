@@ -67,20 +67,36 @@
 /* Items table */
 .items-table {
     margin: 20px 10px 0px 10px;
-    width: 70%;
+    width: calc(100% - 20px);
     background-color: #444;
-    border-spacing: 1px;
-}
-
-.items-table th, .items-table td {
-    padding: 4px;
+    border-collapse: collapse;
 }
 
 .items-table th {
-    background-color: #ddd;
-    font-size: 0.85rem;
+    background-color: #444;
+    color: #fdfdfd;
+    font-size: 1rem;
+    text-align: left;
+    padding: 8px 6px;
 }
 
-.items-table td {
+th.th-actions {
+    text-align: center;
+    width: 12%;
+}
+
+.items-tbody td {
+    font-size: 0.9em;
     background-color: #f9f9f9;
+    padding: 6px;
+}
+
+td.items-actions {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+td.items-actions > button:last-child {
+    margin-left: 20px;
 }
