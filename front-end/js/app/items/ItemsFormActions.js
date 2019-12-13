@@ -4,6 +4,7 @@ import FormManager from '../../core/form/FormManager.js'
 import FormValidator from '../../core/form/FormValidator.js'
 import Messenger from '../../core/message/Messenger.js'
 import HttpRequest from '../../core/http/HttpRequest.js'
+import Modal from '../../core/modal/Modal.js'
 
 const currentUrl = 'http://localhost:3100/items'
 
@@ -25,31 +26,37 @@ const validationPattern = {
 
 export default class ItemsFormActions {
 
-    modal = null
+    modal = new Modal()
+    itemsList = null
 
-
-    async init(tableQuery) {
-        this.itemsList = await http.get()
-        this.fillTable(tableQuery)
+    constructor(tableQuery) {
+        this.tableQuery = tableQuery
     }
 
-    fillTable(tableQuery) {
-        const table = document.querySelector(tableQuery)
-        console.log(table)
+    async init() {
+        this.itemsList = await http.get()
+        this.fillTable()
+    }
+
+    fillTable() {
+        const table = document.querySelector(this.tableQuery)
 
         if(this.itemsList) {
+            table.innerHTML = ''
+
             this.itemsList.forEach(item => {
                 const tr = document.createElement('tr')
+                tr.setAttribute('keyid', item.id)
+
                 tr.innerHTML = `
                     <td>${item.name}</td>
                     <td>${item.type}</td>
                     <td>${item.description}</td>
                     <td class="items-actions">
-                        <button class="btn-edit" title="Edit">&#128393;</button>
+                        <button class="btn-edit" title="Edit">&#9998;</button>
                         <button class="btn-delete" title="Delete">&#x2716;</button>
-                    </td>`
-
-                console.log(tr)
+                    </td>
+                `
                 
                 table.appendChild(tr)
             })
@@ -64,9 +71,7 @@ export default class ItemsFormActions {
 
         if(result.valid) {
             this.submitForm(formManager)
-        } else {       
-            if(this.modal) this.modal.hide()
-
+        } else {
             Messenger.showError(result.message)
         }
     }
@@ -82,7 +87,8 @@ export default class ItemsFormActions {
             Messenger.showSuccess('Success Create!')
         }
 
-        if(this.modal) this.modal.hide()
+        this.modal.hide()
+        this.init()
     }
 
 }

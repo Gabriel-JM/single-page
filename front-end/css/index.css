@@ -7,8 +7,8 @@
 }
 
 /* Header, footer and main size */
-body {
-    font-family: Verdana, sans-serif;
+body, input, textarea {
+    font-family: sans-serif;
     color: #333;
 }
 
@@ -170,8 +170,9 @@ main {
 .btn-edit {
     color: #118afc;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.5em;
     background-color: transparent;
+    transform: rotate(90deg);
     border: 0;
     cursor: pointer;
 }
@@ -179,6 +180,7 @@ main {
 .btn-delete {
     color: rgb(197, 83, 73);
     font-size: 1.4em;
+    font-weight: bolder;
     background-color: transparent;
     border: 0;
     cursor: pointer;

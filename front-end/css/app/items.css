@@ -72,12 +72,12 @@
     border-collapse: collapse;
 }
 
-.items-table th {
+.items-thead th {
     background-color: #444;
     color: #fdfdfd;
     font-size: 1rem;
     text-align: left;
-    padding: 8px 6px;
+    padding: 10px 12px;
 }
 
 th.th-actions {
@@ -85,10 +85,18 @@ th.th-actions {
     width: 12%;
 }
 
+.items-tbody > tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.items-tbody > tr:nth-child(odd) {
+    background-color: #fcfcfc;
+}
+
 .items-tbody td {
     font-size: 0.9em;
-    background-color: #f9f9f9;
-    padding: 6px;
+    font-weight: 300;
+    padding: 8px 12px;
 }
 
 td.items-actions {
