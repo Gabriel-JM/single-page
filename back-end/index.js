@@ -24,7 +24,10 @@ const server = Http.createServer((req, res) => {
         }
 
         const content = {
-            body, method, pathname, query
+            body,
+            method: method.toLowerCase(),
+            pathname,
+            query
         }
 
         new App(req, res, content)
