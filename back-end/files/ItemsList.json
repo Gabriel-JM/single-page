@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-[{"id":1,"name":"Arma","type":"Letal","description":"Uma arma letal"},{"id":2,"name":"Copo","type":"Utensilio","description":"Para beber água."},{"id":3,"name":"Droga","type":"Droga","description":"Uma dorgas."}]
-=======
-[{"id":1,"name":"Pergaminho","type":"Item mágico","description":"Executa um feitiço, porém somente uma vez."}]
->>>>>>> Stashed changes
+[{"id":1,"name":"Vassoura","type":"Item Mágico","description":"Uma vassoura mágica."},{"id":2,"name":"Droga","type":"Droga","description":"Uma droga."}]

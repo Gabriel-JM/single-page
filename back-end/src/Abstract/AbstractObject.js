@@ -13,7 +13,7 @@ class AbstractObject {
                 const index = ids.indexOf(elem)
 
                 const existId = ids.some(id => {
-                    return id === index + 1
+                    return id == index + 1
                 })
 
                 if(!existId) {
@@ -23,7 +23,6 @@ class AbstractObject {
         }
 
         return result ? result : allItems.length + 1
-        
     }
 
 }

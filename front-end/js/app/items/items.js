@@ -13,6 +13,7 @@ export default function items() {
     itemsActions.getAll()
 
     document.querySelector(addItemBtn).addEventListener('click', () => {
+        itemsActions.modal.setModalTitle('Add Item')
         itemsActions.modal.show()
     })
 

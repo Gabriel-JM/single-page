@@ -43,7 +43,7 @@ export default class ItemsActions {
     fillTable() {
         const table = document.querySelector(this.tableQuery)
 
-        if(this.itemsList) {
+        if(this.itemsList.length) {
             table.innerHTML = ''
 
             this.itemsList.forEach(item => {
@@ -62,6 +62,8 @@ export default class ItemsActions {
                 
                 table.appendChild(tr)
             })
+        } else {
+            this.isItemsTableEmpty()
         }
     }
 
@@ -98,6 +100,7 @@ export default class ItemsActions {
             }
         })
 
+        this.modal.setModalTitle('Edit item')
         this.modal.show()
     }
 
@@ -124,8 +127,9 @@ export default class ItemsActions {
         }
     }
     
-    submitForm(form) {
-        const { elements } = form
+    submitForm(formManager) {
+        const { elements } = formManager
+        formManager.form.setAttribute('keyid', null)
 
         if(elements.id) {
             http.put(elements)
@@ -144,6 +148,33 @@ export default class ItemsActions {
         const form = document.querySelector(formQuery)
         form.reset()
         form.setAttribute('keyid', null)
+    }
+
+    isItemsTableEmpty() {
+        const table = document.querySelector(this.tableQuery)
+
+        if(!table.innerText) {
+            this.addNoItemMessage()
+        }
+    }
+
+    addNoItemMessage() {
+        const hasMessage = document.querySelector('.no-item-message')
+
+        if(!hasMessage) {
+            const td = document.createElement('td')
+            td.setAttribute('colspan', 4)
+            td.className = 'no-item-message'
+            td.innerHTML = 'No item available.'
+
+            document.querySelector(this.tableQuery).appendChild(td)
+        }
+    }
+
+    removeNoItemMessage() {
+        const noItemMessage = document.querySelector('.no-item-message')
+
+        if(noItemMessage) noItemMessage.remove()
     }
 
 }

@@ -86,11 +86,11 @@ th.th-actions {
 }
 
 .items-tbody > tr:nth-child(even) {
-    background-color: #f0f0f0;
+    background-color: #ddd;
 }
 
 .items-tbody > tr:nth-child(odd) {
-    background-color: #fcfcfc;
+    background-color: #f9f9f9;
 }
 
 .items-tbody td {
@@ -107,4 +107,11 @@ td.items-actions {
 
 td.items-actions > button:last-child {
     margin-left: 20px;
+}
+
+td.no-item-message {
+    background-color: #ddd;
+    text-align: center;
+    font-weight: bolder;
+    padding: 30px;
 }

@@ -195,6 +195,14 @@ main {
     display: none;
 }
 
+.show {
+    animation: show 0.5s;
+}
+
+.fade {
+    animation: fade 0.5s;
+}
+
 /* Messages */
 [message-container] {
     position: fixed;
@@ -244,6 +252,15 @@ main {
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 

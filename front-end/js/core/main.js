@@ -1,7 +1,7 @@
 "use strict"
 
 import scriptService from './scriptService/scriptService.js'
-import HtmlObject from '../htmlStore/HtmlObject.js'
+import HtmlObject from './htmlStore/HtmlObject.js'
 
 let currentPage = null
 let htmlContents = []
