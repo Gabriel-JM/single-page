@@ -2,18 +2,18 @@
 
 export default class Modal {
 
-    #query = '.modal-container'
+    query = '.modal-container'
 
     constructor() {
         this.addCloseEvent()
     }
 
     show() {
-        document.querySelector(this.#query).style.display = 'flex'
+        document.querySelector(this.query).style.display = 'flex'
     }
 
     hide() {
-        document.querySelector(this.#query).style.display = 'none'
+        document.querySelector(this.query).style.display = 'none'
     }
 
     addCloseEvent() {

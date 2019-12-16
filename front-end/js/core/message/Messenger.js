@@ -24,7 +24,10 @@ export default class Messenger {
         const div = document.createElement('div')
         div.className = 'message ' + type
 
-        div.innerHTML = `<p>${message}</p>`
+        div.innerHTML = `
+            <span>${type == 'error' ? '&#10008;' : '&#10004;'}</span>
+            <p>${message}</p>
+        `
 
         return div
     }

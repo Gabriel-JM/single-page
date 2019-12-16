@@ -1,6 +1,6 @@
 "use strict"
 
-import ItemsFormActions from './ItemsFormActions.js'
+import ItemsActions from './ItemsActions.js'
 
 export default function items() {
     const formQuery = '.items-modal-form'
@@ -8,23 +8,23 @@ export default function items() {
     const cancelForm = '.btn-cancel'
     const itemsTable = '[items-table]'
 
-    const itemsFormActions = new ItemsFormActions(itemsTable)
+    const itemsActions = new ItemsActions(itemsTable)
 
-    itemsFormActions.init()
+    itemsActions.getAll()
 
     document.querySelector(addItemBtn).addEventListener('click', () => {
-        itemsFormActions.modal.show()
+        itemsActions.modal.show()
     })
 
     document.querySelector(formQuery).addEventListener('submit', event => {
         event.preventDefault()
-        itemsFormActions.validateForm(event.target)
+        itemsActions.validateForm(event.target)
     })
 
     document.querySelector(cancelForm).addEventListener('click', event => {
         event.preventDefault()
-        document.querySelector(formQuery).reset()
-        itemsFormActions.modal.hide()
+        itemsActions.clearModal()
+        itemsActions.modal.hide()
     })
 
 }

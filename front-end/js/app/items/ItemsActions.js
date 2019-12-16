@@ -7,6 +7,7 @@ import HttpRequest from '../../core/http/HttpRequest.js'
 import Modal from '../../core/modal/Modal.js'
 
 const currentUrl = 'http://localhost:3100/items'
+const formQuery = '.items-modal-form'
 
 const http = new HttpRequest(currentUrl)
 const validationPattern = {
@@ -24,7 +25,7 @@ const validationPattern = {
     }
 }
 
-export default class ItemsFormActions {
+export default class ItemsActions {
 
     modal = new Modal()
     itemsList = null
@@ -33,9 +34,10 @@ export default class ItemsFormActions {
         this.tableQuery = tableQuery
     }
 
-    async init() {
+    async getAll() {
         this.itemsList = await http.get()
         this.fillTable()
+        this.addButtonsEvents()
     }
 
     fillTable() {
@@ -60,6 +62,52 @@ export default class ItemsFormActions {
                 
                 table.appendChild(tr)
             })
+        }
+    }
+
+    addButtonsEvents() {
+        const buttonsTypes = ['edit', 'delete']
+
+        buttonsTypes.forEach(type => {
+            document.querySelectorAll(`.btn-${type}`).forEach(btn => {
+                btn.addEventListener('click', async event => {
+                    const itemTr = event.target.parentElement.parentElement
+                    const itemId = itemTr.getAttribute('keyid')
+
+                    if(type == 'delete') {
+                        this.doDelete(itemTr, itemId)
+                    } else {
+                        this.doEdit(itemId)
+                    }
+                })
+            })
+        })
+    }
+
+    async doEdit(id) {
+        const item = await http.get(id)
+        const form = document.querySelector(formQuery)
+
+        Object.keys(item).forEach(attr => {
+            const formField = form[attr]
+
+            if(attr !== 'id') {
+                formField.value = item[attr]
+            } else {
+                form.setAttribute('keyid', item.id)
+            }
+        })
+
+        this.modal.show()
+    }
+
+    async doDelete(tableRow, id) {
+        const result = await http.delete(id)
+
+        if(result.ok) {
+            tableRow.remove()
+            Messenger.showSuccess('Item Deleted!')
+            this.getAll()
         }
     }
 
@@ -88,7 +136,14 @@ export default class ItemsFormActions {
         }
 
         this.modal.hide()
-        this.init()
+        this.clearModal()
+        this.getAll()
+    }
+
+    clearModal() {
+        const form = document.querySelector(formQuery)
+        form.reset()
+        form.setAttribute('keyid', null)
     }
 
 }

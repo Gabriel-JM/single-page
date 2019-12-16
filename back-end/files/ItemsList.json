@@ -1,1 +1,1 @@
-[{"id":3,"name":"Weapon","type":"Letal","description":"Vou meter um suposto portunhol aqui kkkk"},{"id":4,"name":"Copo","type":"Utensílio de cozinha","description":"Um recipiente para por líquidos."},{"id":5,"name":"Copo","type":"Utensílio de cozinha","description":"Pra por água"},{"id":2,"name":"Teste","type":"Testado","description":"Um pequeno teste"}]
+[{"id":1,"name":"Arma","type":"Letal","description":"Uma arma letal"},{"id":2,"name":"Copo","type":"Utensilio","description":"Para beber água."},{"id":3,"name":"Droga","type":"Droga","description":"Uma dorgas."}]
