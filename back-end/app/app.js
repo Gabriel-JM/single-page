@@ -2,6 +2,7 @@
 
 const AbstractController = require('../src/Abstract/AbstractController')
 const ItemController = require('../src/items/ItemController')
+const EventsController = require('../src/events/EventsController')
 
 class App {
 
@@ -24,6 +25,9 @@ class App {
 
             case '/items':
                 return new ItemController(this.req, this.res, content)
+
+            case '/events':
+                return new EventsController(this.req, this.res, content)
 
             default:
                 new AbstractController(this.req, this.res).notFound()
