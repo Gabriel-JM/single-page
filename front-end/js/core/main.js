@@ -56,8 +56,8 @@ async function requestFileContent(fileName) {
 function loadScript(fileName) {
     if(scriptService[fileName]) {
         scriptService[fileName]()
-        addRouterEvent()
     }
+    addRouterEvent()
 }
 
 function addRouterEvent() {
