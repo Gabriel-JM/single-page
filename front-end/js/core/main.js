@@ -6,7 +6,7 @@ import HtmlObject from './htmlStore/HtmlObject.js'
 let currentPage = null
 let htmlContents = []
 
-async function loadFileContent(fileName) {
+export async function loadFileContent(fileName) {
 
     if(fileName !== currentPage) {
         const main = document.querySelector('[main-content]')

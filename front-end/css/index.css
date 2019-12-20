@@ -207,6 +207,19 @@ main {
     animation: fade 0.5s;
 }
 
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0px 10px 10px 10px;
+    border-bottom: 1px solid #333;
+}
+
+.page-header h2 {
+    font-size: 1.9em;
+}
+
 /* Messages */
 [message-container] {
     position: fixed;

@@ -1,0 +1,29 @@
+.events-form-header {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.events-form-header h2 {
+    font-size: 1.9em;
+}
+
+input {
+    display: block;
+    width: 100%;
+}
+
+.add-event-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.add-event-form > * {
+    flex: 1 1 calc(33.3% - 16px);
+    margin: 8px;
+}
+
+.location {
+    flex-basis: 100%;
+}
