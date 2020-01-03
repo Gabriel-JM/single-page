@@ -220,6 +220,12 @@ main {
     font-size: 1.9em;
 }
 
+label span {
+    font-size: 1.05rem;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
 /* Messages */
 [message-container] {
     position: fixed;

@@ -11,8 +11,8 @@ class EventsController extends AbstractController {
     constructor(req, res, content) {
         super(req, res, content, eventsService)
         this.setPostObject(() => {
-            const { name, dateInit, dateEnd, location } = this.content.body
-            return new Event(name, dateInit, dateEnd, location)
+            const { name, dateStart, dateEnd, location } = this.content.body
+            return new Event(name, dateStart, dateEnd, location)
         })
     }
 

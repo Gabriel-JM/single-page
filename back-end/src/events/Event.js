@@ -7,11 +7,11 @@ const eventsService = new EventsService()
 
 class Event extends AbstractObject {
 
-    constructor(name, dateInit, dateEnd, location) {
+    constructor(name, dateStart, dateEnd, location) {
         super()
         this.id = this.generateId(eventsService)
         this.name = name
-        this.dateInit = dateInit
+        this.dateStart = dateStart
         this.dateEnd = dateEnd
         this.location = location
     }

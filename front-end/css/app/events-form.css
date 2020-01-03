@@ -10,6 +10,15 @@
 input {
     display: block;
     width: 100%;
+    margin-bottom: 12px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px 8px;
+    background-color: #fdfdfd;
+}
+
+input[type=date] {
+    padding: 2.5px 8px;
 }
 
 .add-event-form {
@@ -17,6 +26,11 @@ input {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .add-event-form > * {
@@ -26,4 +40,40 @@ input {
 
 .location {
     flex-basis: 100%;
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.location legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 10px
+}
+
+.location-fields {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.location-fields > * {
+    margin: 0 5px;
+    flex-grow: 1;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.actions button {
+    font-size: 1rem;
+}
+
+.actions .btn-submit {
+    margin-right: 10px;
 }

@@ -9,8 +9,10 @@ export default class FormManager {
     }
 
     getInputs() {
+        const availableNames = ['INPUT','TEXTAREA']
+
         return Array.from(this.form.elements).filter(element => {
-            return element.nodeName !== 'BUTTON'
+            return availableNames.includes(element.nodeName)
         })
     }
 

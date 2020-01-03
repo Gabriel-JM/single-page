@@ -6,7 +6,7 @@ import HtmlObject from './htmlStore/HtmlObject.js'
 let currentPage = null
 let htmlContents = []
 
-export async function loadFileContent(fileName) {
+export async function loadFileContent(fileName, keyId) {
 
     if(fileName !== currentPage) {
         const main = document.querySelector('[main-content]')
@@ -14,7 +14,7 @@ export async function loadFileContent(fileName) {
 
         main.innerHTML = await getHtmlContent(htmlFileNames, fileName)
 
-        loadScript(fileName)
+        loadScript(fileName, keyId)
         loadCss()
         currentPage = fileName
     }
@@ -53,9 +53,9 @@ async function requestFileContent(fileName) {
     }
 }
 
-function loadScript(fileName) {
+function loadScript(fileName, keyId) {
     if(scriptService[fileName]) {
-        scriptService[fileName]()
+        scriptService[fileName](keyId)
     }
     addRouterEvent()
 }
@@ -64,7 +64,8 @@ function addRouterEvent() {
     document.querySelectorAll('[goTo]').forEach(anchor => {
         anchor.addEventListener('click', () => {
             const fileName = anchor.getAttribute('goTo')
-            loadFileContent(fileName)
+            const keyId = anchor.getAttribute('keyid')
+            loadFileContent(fileName, keyId)
         })
     })
 }

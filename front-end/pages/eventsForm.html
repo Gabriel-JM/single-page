@@ -1,0 +1,46 @@
+<div class="container" css="app/events-form">
+    <hgroup class="page-header">
+        <h2>Add Events</h2>
+    </hgroup>
+    <form class="add-event-form">
+        <label class="name">
+            <span>Name</span>
+            <input type="text" name="name" maxlength="80" required>
+        </label>
+
+        <label class="date-start">
+            <span>Start date</span>
+            <input type="date" name="dateStart" required>
+        </label>
+
+        <label class="date-end">
+            <span>End Date</span>
+            <input type="date" name="dateEnd" required>
+        </label>
+
+        <fieldset class="location">
+            <legend>Location</legend>
+            <div class="location-fields">
+                <label>
+                    <span>City</span>
+                    <input type="text" name="city" maxlength="30" required>
+                </label>
+
+                <label>
+                    <span>District</span>
+                    <input type="text" name="district" maxlength="120" required>
+                </label>
+
+                <label>
+                    <span>Street</span>
+                    <input type="text" name="street" maxlength="140" required>
+                </label>
+            </div>
+        </fieldset>
+
+        <div class="actions">
+            <button class="btn-submit">Save</button>
+            <button class="btn-cancel" goTo="events">Cancel</button>
+        </div>
+    </form>
+</div>
