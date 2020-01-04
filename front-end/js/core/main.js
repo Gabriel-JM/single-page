@@ -16,6 +16,7 @@ export async function loadFileContent(fileName, keyId) {
 
         loadScript(fileName, keyId)
         loadCss()
+        addRouterEvent()
         currentPage = fileName
     }
     
@@ -57,10 +58,9 @@ function loadScript(fileName, keyId) {
     if(scriptService[fileName]) {
         scriptService[fileName](keyId)
     }
-    addRouterEvent()
 }
 
-function addRouterEvent() {
+export function addRouterEvent() {
     document.querySelectorAll('[goTo]').forEach(anchor => {
         anchor.addEventListener('click', () => {
             const fileName = anchor.getAttribute('goTo')

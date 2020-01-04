@@ -1,42 +1,24 @@
 <div class="container" css="app/events">
     <hgroup class="page-header">
         <h2>Events</h2>
-        <button goTo="eventsForm" keyid="1" class="plus-btn">&plus; Add Event</button>
+        <button goTo="eventsForm" class="plus-btn">&plus; Add Event</button>
     </hgroup>
 
     <section class="events-lister-container">
-        <div class="events-lister">
-            <div class="event">
-                <p>Event Name</p>
-            </div>
-            <div class="event">
-                <p>Event Name</p>
-            </div>
-            <div class="event">
-                <p>Event Name</p>
-            </div>
-            <div class="event">
-                <p>Event Name</p>
-            </div>
-            <div class="event">
-                <p>Event Name</p>
-            </div>
-            <div class="event">
-                <p>Event Name</p>
-            </div>
-        </div>
+        <div class="events-lister"></div>
 
         <aside class="event-description-container">
             <h3 class="event-description-title">Description</h3>
             <div class="event-description">
-                <h4 class="event-name">Event Name</h4>
-                <div class="event-date">
-                    <p>Start date: <span>20/05/2019</span></p>
-                    <p>End date: <span>30/05/2019</span></p>
-                </div>
-                <div class="event-location">
-                    <h4>Location</h4>
-                    <p>Good market street</p>
+                <hgroup class="event-name"></hgroup>
+                <div class="event-date">No Event.</div>
+                <div class="event-location"></div>
+            </div>
+            <div class="delete-event-message">
+                <h4>Are you sure?</h4>
+                <div>
+                    <button yes >Yes</button>
+                    <button no >No</button>
                 </div>
             </div>
         </aside>
