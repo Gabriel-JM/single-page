@@ -239,6 +239,7 @@ label span {
 }
 
 .message {
+    max-width: 25vw;
     display: flex;
     align-items: center;
     font-size: 1.25em;
@@ -247,7 +248,7 @@ label span {
     margin-top: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-    animation: appear 2.7s;
+    animation: appear 3s;
     animation-fill-mode: forwards;
 }
 

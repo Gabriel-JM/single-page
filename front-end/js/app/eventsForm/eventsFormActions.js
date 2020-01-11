@@ -54,7 +54,6 @@ export default class EventsFormActions {
             Object.keys(obj).forEach(attr => {
                 if(form[attr]) {
                     form[attr].value = obj[attr]
-                    console.log(obj)
                 }
             })
         })
@@ -71,15 +70,27 @@ export default class EventsFormActions {
         // this.form.inputs[2].valueAsDate = new Date('2020-01-02')
         
         if(result.valid) {
-            console.log(this.form)
-            this.save(this.form.elements)
+            this.verifyDates()
         } else {
             Messenger.showError(result.message)
         }
     }
 
+    verifyDates() {
+        if(this.form.elements.dateStart < this.form.elements.dateEnd) {
+            this.save(this.form.elements)
+        } else {
+            this.clearDates()
+            Messenger.showError('Start date cannot be less then the final one!')
+        }
+    }
+
+    clearDates() {
+        this.form.form.dateStart.value = ''
+        this.form.form.dateEnd.value = ''
+    }
+
     save(formValue) {
-        console.log(formValue)
         const { id, name, dateStart, dateEnd, city, district, street } = formValue
         const formContent = {
             id,

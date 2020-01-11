@@ -122,6 +122,7 @@ export default class EventsActions {
         const result = await http.delete(keyId)
 
         if(result.ok) {
+            this.update()
             Messenger.showSuccess(result.message)
         } else {
             Messenger.showError(result.message)

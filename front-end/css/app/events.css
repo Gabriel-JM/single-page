@@ -28,7 +28,7 @@
 }
 
 .event-description-container {
-    min-height: 30vh;
+    min-height: 290px;
     width: 30%;
     border-left: 1px solid #aaa;
     position: relative;
