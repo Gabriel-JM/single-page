@@ -100,6 +100,10 @@
     padding: 0 5%;
 }
 
+.location-detail tr td {
+    padding-bottom: 5px;
+}
+
 .location-detail tr td:first-child {
     font-weight: bold;
     padding-right: 10px;

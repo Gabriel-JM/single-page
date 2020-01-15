@@ -77,7 +77,7 @@ export default class EventsFormActions {
     }
 
     verifyDates() {
-        if(this.form.elements.dateStart < this.form.elements.dateEnd) {
+        if(this.form.elements.dateStart <= this.form.elements.dateEnd) {
             this.save(this.form.elements)
         } else {
             this.clearDates()
