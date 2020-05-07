@@ -1,3 +1,27 @@
-.p {
-    color: lightblue;
+h1.home-title {
+    font-size: 32px;
+    padding-top: 40px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+}
+
+p.made-with {
+    font-size: 22px;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+a {
+    color: #333;
+}
+
+a:hover {
+    color: #aaa;
 }
